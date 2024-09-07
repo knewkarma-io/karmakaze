@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "karmakaze"
-version = "0.1.0"
+version = "0.2.0"
 description = "Response deserialisation & parsing engine for Knew Karma"
 authors = ["Richard Mwewa <rly0nheart@duck.com>"]
 license = "MIT License"
@@ -22,6 +22,10 @@ repository = "https://github.com/rly0nheart/karmakaze"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+poetry = "^1.8.3"
+pytest = "^8.2.0"
 
 [build-system]
 requires = ["poetry-core"]
