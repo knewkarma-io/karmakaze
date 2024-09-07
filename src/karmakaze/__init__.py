@@ -1,3 +1,3 @@
-from .parse import Deserialise, Parse
+from karmakaze import deserialise, parse, tools
 
-__all__ = ["deserialise", "parse"]
+__all__ = ["deserialise", "parse", "tools"]

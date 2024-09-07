@@ -85,8 +85,11 @@ class Deserialise:
         """
 
         children: List = response.get("data").get("children")
-        if isinstance(response, List):
-            return [data.get("data") for data in children]
+        return (
+            [Deserialise.subreddit_or_user(data) for data in children]
+            if isinstance(children, List)
+            else None
+        )
 
     @staticmethod
     def wiki_page(response: Dict) -> Dict:

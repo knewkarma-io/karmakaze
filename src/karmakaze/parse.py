@@ -1,7 +1,7 @@
 from types import SimpleNamespace
 from typing import Dict, Union, List
 
-from tools import timestamp_to_readable, TIME_FORMAT
+from .tools import timestamp_to_readable, TIME_FORMAT
 
 __all__ = ["Parse"]
 
@@ -79,7 +79,9 @@ class Parse:
                 }
             )
 
-        if isinstance(raw_comments, List) and len(raw_comments) != 0:
+        if isinstance(raw_comments, List) and all(
+            isinstance(comment) for comment in raw_comments
+        ):
             return [comment(raw_comment=raw_comment) for raw_comment in raw_comments]
         elif isinstance(raw_comments, Dict):
             return comment(raw_comment=raw_comments)
@@ -171,7 +173,7 @@ class Parse:
                 }
             )
 
-        if isinstance(raw_posts, List):
+        if isinstance(raw_posts, List) and all(isinstance(post) for post in raw_posts):
             return [post(raw_post=raw_post) for raw_post in raw_posts]
         elif isinstance(raw_posts, Dict):
             return post(raw_post=raw_posts)
@@ -278,7 +280,9 @@ class Parse:
                 }
             )
 
-        if isinstance(raw_subreddits, List) and len(raw_subreddits) != 0:
+        if isinstance(raw_subreddits, List) and all(
+            isinstance(subreddit) for subreddit in raw_subreddits
+        ):
             return [
                 subreddit(raw_subreddit=raw_subreddit)
                 for raw_subreddit in raw_subreddits
@@ -337,7 +341,7 @@ class Parse:
                 }
             )
 
-        if isinstance(raw_users, List):
+        if isinstance(raw_users, List) and all(isinstance(user) for user in raw_users):
             return [user(raw_user=raw_user) for raw_user in raw_users]
 
         elif isinstance(raw_users, Dict) and "is_employee" in raw_users:
