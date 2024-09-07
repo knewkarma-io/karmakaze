@@ -1,3 +1,3 @@
-from karmakaze import deserialise, parse, tools
+from karmakaze import klean, strukt, tools
 
-__all__ = ["deserialise", "parse", "tools"]
+__all__ = ["klean", "strukt", "tools"]
