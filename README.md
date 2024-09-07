@@ -1,6 +1,6 @@
 <h2 align="center">Karma Kaze (カルマの風)</h2>
 
-<p align="center">Response deserialisation &amp; parsing engine for Knew Karma.</p>
+<p align="center">Data sanitisation engine for <a href="https://https://pypi.org/project/knewkarma">Knew Karma</a>.</p>
 
 ```python
 from karmakaze.klean import Klean
