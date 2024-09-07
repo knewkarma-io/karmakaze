@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "karmakaze"
-version = "0.2.0"
-description = "Response deserialisation & parsing engine for Knew Karma"
+version = "1.0.0"
+description = "Data sanitisation engine for Knew Karma"
 authors = ["Richard Mwewa <rly0nheart@duck.com>"]
 license = "MIT License"
 readme = "README.md"

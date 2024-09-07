@@ -1,18 +1,18 @@
 from typing import List, Dict, Union
 
-__all__ = ["Deserialise"]
+__all__ = ["Klean"]
 
 
-class Deserialise:
+class Klean:
     """
-    Provides static methods to deserialise various types of data
+    Provides static methods to sanitise various types of data
     from Reddit API responses.
     """
 
     @staticmethod
     def comments(response: List[Dict]) -> List[Dict]:
         """
-        Deserialises a Reddit API response to extract and return a list of comment data.
+        Sanitises a Reddit API response to extract and return a list of comment data.
 
         :param response: A list containing the Reddit API response data.
         :type response: List[Dict]
@@ -30,7 +30,7 @@ class Deserialise:
     @staticmethod
     def post(response: List[Dict]) -> Dict:
         """
-        Deserialises a Reddit API response to extract and return the data of a single post.
+        Sanitises a Reddit API response to extract and return the data of a single post.
 
         :param response: A list containing the Reddit API response data.
         :type response: List[Dict]
@@ -48,7 +48,7 @@ class Deserialise:
     @staticmethod
     def posts(response: Dict) -> List[Dict]:
         """
-        Deserialises a Reddit API response to extract and return a list of post data.
+        Sanitises a Reddit API response to extract and return a list of post data.
 
         :param response: A dictionary containing the Reddit API response data.
         :type response: Dict
@@ -62,7 +62,7 @@ class Deserialise:
     @staticmethod
     def subreddit_or_user(response: Dict) -> Dict:
         """
-        Deserialises a Reddit API response to extract and return the data of a subreddit or user.
+        Sanitises a Reddit API response to extract and return the data of a subreddit or user.
 
         :param response: A dictionary containing the Reddit API response data.
         :type response: Dict
@@ -76,7 +76,7 @@ class Deserialise:
     @staticmethod
     def subreddits_or_users(response: Dict) -> Union[List[Dict], None]:
         """
-        Deserialises a Reddit API response to extract and return a list of subreddit or user data.
+        Sanitises a Reddit API response to extract and return a list of subreddit or user data.
 
         :param response: A dictionary containing the Reddit API response data.
         :type response: Dict
@@ -86,7 +86,7 @@ class Deserialise:
 
         children: List = response.get("data").get("children")
         return (
-            [Deserialise.subreddit_or_user(data) for data in children]
+            [Klean.subreddit_or_user(data) for data in children]
             if isinstance(children, List)
             else None
         )
@@ -94,7 +94,7 @@ class Deserialise:
     @staticmethod
     def wiki_page(response: Dict) -> Dict:
         """
-        Deserialises a Reddit API response to extract and return the data of a wiki page,
+        Sanitises a Reddit API response to extract and return the data of a wiki page,
         including revision information.
 
         :param response: A dictionary containing the Reddit API response data.
@@ -105,7 +105,7 @@ class Deserialise:
 
         data: Dict = response.get("data")
         if data:
-            data["revision_by"]: Dict = Deserialise.subreddit_or_user(
+            data["revision_by"]: Dict = Klean.subreddit_or_user(
                 response=data.get("revision_by")
             )
 

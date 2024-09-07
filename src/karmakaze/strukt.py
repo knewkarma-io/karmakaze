@@ -3,10 +3,10 @@ from typing import Dict, Union, List
 
 from .tools import timestamp_to_readable, TIME_FORMAT
 
-__all__ = ["Parse"]
+__all__ = ["Strukt"]
 
 
-class Parse:
+class Strukt:
     def __init__(self, time_format: TIME_FORMAT = "locale"):
         self._time_format = time_format
 
@@ -14,7 +14,7 @@ class Parse:
         self, raw_comments: Union[List[Dict], Dict]
     ) -> Union[List[SimpleNamespace], SimpleNamespace]:
         """
-        Parses raw Reddit comments into a list of SimpleNamespace objects.
+        Restructures raw Reddit comments and parses them into a list of SimpleNamespace objects.
 
         :param raw_comments: A list of dictionaries, each representing raw comment data,
                              or a single dictionary.
@@ -26,7 +26,7 @@ class Parse:
 
         def comment(raw_comment: Dict) -> SimpleNamespace:
             """
-            Parses a single raw comment into a SimpleNamespace object.
+            Restructures a single raw comment and parses it into a SimpleNamespace object.
 
             :param raw_comment: A dictionary containing raw data for a single Reddit raw_comment.
             :type raw_comment: Dict
@@ -90,7 +90,7 @@ class Parse:
         self, raw_posts: Union[Dict, List]
     ) -> Union[List[SimpleNamespace], SimpleNamespace]:
         """
-        Parses raw Reddit posts into a list of SimpleNamespace objects.
+        Restructures raw Reddit posts and parses them into a list of SimpleNamespace objects.
 
         :param raw_posts: A list of dictionaries, each representing raw post data,
                           or a single dictionary.
@@ -102,7 +102,7 @@ class Parse:
 
         def post(raw_post: Dict) -> SimpleNamespace:
             """
-            Parses a single raw post into a SimpleNamespace object.
+            Restructures a single raw post and parses it into a SimpleNamespace object.
 
             :param raw_post: A dictionary containing raw data for a single Reddit post.
             :type raw_post: Dict
@@ -182,7 +182,7 @@ class Parse:
         self, raw_subreddits: Union[List[Dict], Dict]
     ) -> Union[List[SimpleNamespace], SimpleNamespace]:
         """
-        Parses raw Reddit subreddits data into a list of SimpleNamespace objects.
+        Restructures raw Reddit subreddits and parses them into a list of SimpleNamespace objects.
 
         :param raw_subreddits: A list of dictionaries, each representing raw subreddit data, or a single dictionary.
         :type raw_subreddits: Union[List[Dict], Dict]
@@ -192,7 +192,7 @@ class Parse:
 
         def subreddit(raw_subreddit: dict) -> SimpleNamespace:
             """
-            Parses a single raw subreddit into a SimpleNamespace object.
+            Restructures a single raw subreddit and parses it into a SimpleNamespace object.
 
             :param raw_subreddit: A dictionary containing raw data for a single subreddit.
             :type raw_subreddit: Dict
@@ -294,7 +294,7 @@ class Parse:
         self, raw_users: Union[List[Dict], Dict]
     ) -> Union[List[SimpleNamespace], SimpleNamespace]:
         """
-        Parses raw Reddit user data into a list of SimpleNamespace objects.
+        Restructures raw Reddit users and parses them into a list of SimpleNamespace objects.
 
         :param raw_users: A list of dictionaries, each containing raw user data, or a single dictionary.
         :type raw_users: Union[List[Dict], Dict]
@@ -304,7 +304,7 @@ class Parse:
 
         def user(raw_user: Dict) -> SimpleNamespace:
             """
-            Parses a single raw user into a SimpleNamespace object.
+            Restructures a single raw user and parses it into a SimpleNamespace object.
 
             :param raw_user: A dictionary containing raw data for a single Reddit user.
             :type raw_user: Dict
@@ -349,7 +349,7 @@ class Parse:
 
     def wiki_page(self, raw_wiki_page: Dict) -> SimpleNamespace:
         """
-        Parses raw Reddit wiki page data into a SimpleNamespace object.
+        Restructures raw Reddit wiki page and parses it into a SimpleNamespace object.
 
         :param raw_wiki_page: A dictionary representing raw wiki page data.
         :type raw_wiki_page: Dict
