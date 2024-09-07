@@ -14,8 +14,8 @@ import requests
 username = "AutoModerator"
 response = requests.get(f"https://www.reddit.com/user/{username}/about.json").json()
 
-klean = Klean()  # Sanitises the data
-strukt = Strukt()  # Restructures the sanitised data
+klean = Klean()  # Provides static methods for sanitising raw response data
+strukt = Strukt()  # Provides methods for restructuring the sanitised data
 
 sanitised_data = klean.subreddit_or_user(response)
 restructured_data = strukt.users(sanitised_data)
