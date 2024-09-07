@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "karmakaze"
+version = "0.1.0"
+description = "Response deserialisation & parsing engine for Knew Karma"
+authors = ["Richard Mwewa <rly0nheart@duck.com>"]
+license = "MIT License"
+readme = "README.md"
+keywords = ["knewkarma", "reddit", "reddit-api"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English"
+]
+
+[tool.poetry.urls]
+homepage = "https://knewkarma.readthedocs.io"
+tracker = "https://github.com/rly0nheart/karmakaze/issues"
+repository = "https://github.com/rly0nheart/karmakaze"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
