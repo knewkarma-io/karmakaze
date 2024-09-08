@@ -6,6 +6,8 @@ authors = ["Richard Mwewa <rly0nheart@duck.com>"]
 license = "MIT License"
 readme = "README.md"
 keywords = ["reddit", "reddit-api"]
+homepage = "https://knewkarma.readthedocs.io"
+repository = "https://github.com/rly0nheart/karmakaze"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Programming Language :: Python :: 3",
@@ -16,9 +18,7 @@ classifiers = [
 ]
 
 [tool.poetry.urls]
-homepage = "https://knewkarma.readthedocs.io"
-tracker = "https://github.com/rly0nheart/karmakaze/issues"
-repository = "https://github.com/rly0nheart/karmakaze"
+"Bug Tracker" = "https://github.com/rly0nheart/karmakaze/issues"
 
 [tool.poetry.dependencies]
 python = "^3.10"
