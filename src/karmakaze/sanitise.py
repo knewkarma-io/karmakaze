@@ -25,7 +25,11 @@ class Sanitise:
             response = response[1]
             children = response.get("data").get("children")
 
-        return [child.get("data") for child in children] if children else None
+        return (
+            [child.get("data") for child in children]
+            if isinstance(children, List)
+            else None
+        )
 
     @staticmethod
     def post(response: List[Dict]) -> Dict:
@@ -43,7 +47,7 @@ class Sanitise:
             response = response[0]
             children = response.get("data").get("children")
 
-        return children[0].get("data") if children else None
+        return children[0].get("data") if isinstance(children, List) else None
 
     @staticmethod
     def posts(response: Dict) -> List[Dict]:
@@ -57,7 +61,11 @@ class Sanitise:
         """
 
         children: Dict = response.get("data").get("children")
-        return [child.get("data") for child in children] if children else None
+        return (
+            [child.get("data") for child in children]
+            if isinstance(children, List)
+            else None
+        )
 
     @staticmethod
     def subreddit_or_user(response: Dict) -> Dict:
