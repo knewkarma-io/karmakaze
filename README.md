@@ -15,7 +15,7 @@ username = "AutoModerator"
 response = requests.get(f"https://www.reddit.com/user/{username}/about.json").json()
 
 sanitise = Sanitise()  # Provides static methods for sanitising raw response data
-parse = Parse()  # Provides methods for restructuring the sanitised data
+parse = Parse()  # Provides methods for parsing the sanitised data
 
 sanitised_data = sanitise.subreddit_or_user(response)
 parsed_data = parse.users(sanitised_data)
