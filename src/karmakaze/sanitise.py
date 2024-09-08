@@ -1,9 +1,9 @@
 from typing import List, Dict, Union
 
-__all__ = ["Klean"]
+__all__ = ["Sanitise"]
 
 
-class Klean:
+class Sanitise:
     """
     Provides static methods to sanitise various types of data
     from Reddit API responses.
@@ -25,7 +25,11 @@ class Klean:
             response = response[1]
             children = response.get("data").get("children")
 
-        return [child.get("data") for child in children] if children else None
+        return (
+            [child.get("data") for child in children]
+            if isinstance(children, List)
+            else None
+        )
 
     @staticmethod
     def post(response: List[Dict]) -> Dict:
@@ -43,7 +47,7 @@ class Klean:
             response = response[0]
             children = response.get("data").get("children")
 
-        return children[0].get("data") if children else None
+        return children[0].get("data") if isinstance(children, List) else None
 
     @staticmethod
     def posts(response: Dict) -> List[Dict]:
@@ -57,7 +61,11 @@ class Klean:
         """
 
         children: Dict = response.get("data").get("children")
-        return [child.get("data") for child in children] if children else None
+        return (
+            [child.get("data") for child in children]
+            if isinstance(children, List)
+            else None
+        )
 
     @staticmethod
     def subreddit_or_user(response: Dict) -> Dict:
@@ -71,7 +79,7 @@ class Klean:
         """
 
         data: Dict = response.get("data")
-        return data if "created_utc" in data else None
+        return data if isinstance(data, Dict) else None
 
     @staticmethod
     def subreddits_or_users(response: Dict) -> Union[List[Dict], None]:
@@ -86,7 +94,7 @@ class Klean:
 
         children: List = response.get("data").get("children")
         return (
-            [Klean.subreddit_or_user(data) for data in children]
+            [Sanitise.subreddit_or_user(data) for data in children]
             if isinstance(children, List)
             else None
         )
@@ -102,14 +110,16 @@ class Klean:
         :return: A dictionary representing the wiki page data, including revision information.
         :rtype: Dict
         """
-
         data: Dict = response.get("data")
         if data:
-            data["revision_by"]: Dict = Klean.subreddit_or_user(
-                response=data.get("revision_by")
-            )
+            revision_by = data.get("revision_by")
+            if revision_by and isinstance(revision_by, Dict):
+                sanitized_revision_by = Sanitise.subreddit_or_user(revision_by)
+                data["revision_by"] = (
+                    sanitized_revision_by if sanitized_revision_by else revision_by
+                )
 
-            return data if data else None
+            return data
 
 
 # -------------------------------- END ----------------------------------------- #
