@@ -20,6 +20,7 @@ class Parse:
            or `locale` for a localized datetime string. Defaults to `locale`.
         :type time_format: Literal["concise", "locale"]
         """
+        
         self._time_format = time_format
 
     def comments(
