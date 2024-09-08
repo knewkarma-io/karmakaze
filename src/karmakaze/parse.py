@@ -3,10 +3,10 @@ from typing import Dict, Union, List
 
 from .tools import timestamp_to_readable, TIME_FORMAT
 
-__all__ = ["Strukt"]
+__all__ = ["Parse"]
 
 
-class Strukt:
+class Parse:
     def __init__(self, time_format: TIME_FORMAT = "locale"):
         self._time_format = time_format
 
@@ -14,7 +14,7 @@ class Strukt:
         self, raw_comments: Union[List[Dict], Dict]
     ) -> Union[List[SimpleNamespace], SimpleNamespace]:
         """
-        Restructures raw Reddit comments and parses them into a list of SimpleNamespace objects.
+        Parses sanitised Reddit comments into a list of SimpleNamespace objects.
 
         :param raw_comments: A list of dictionaries, each representing raw comment data,
                              or a single dictionary.
@@ -26,7 +26,7 @@ class Strukt:
 
         def comment(raw_comment: Dict) -> SimpleNamespace:
             """
-            Restructures a single raw comment and parses it into a SimpleNamespace object.
+            Parses a single raw comment into a SimpleNamespace object.
 
             :param raw_comment: A dictionary containing raw data for a single Reddit raw_comment.
             :type raw_comment: Dict
@@ -80,7 +80,7 @@ class Strukt:
             )
 
         if isinstance(raw_comments, List) and all(
-            isinstance(comment) for comment in raw_comments
+            isinstance(comment, Dict) for comment in raw_comments
         ):
             return [comment(raw_comment=raw_comment) for raw_comment in raw_comments]
         elif isinstance(raw_comments, Dict):
@@ -90,7 +90,7 @@ class Strukt:
         self, raw_posts: Union[Dict, List]
     ) -> Union[List[SimpleNamespace], SimpleNamespace]:
         """
-        Restructures raw Reddit posts and parses them into a list of SimpleNamespace objects.
+        Parses sanitised Reddit posts into a list of SimpleNamespace objects.
 
         :param raw_posts: A list of dictionaries, each representing raw post data,
                           or a single dictionary.
@@ -102,7 +102,7 @@ class Strukt:
 
         def post(raw_post: Dict) -> SimpleNamespace:
             """
-            Restructures a single raw post and parses it into a SimpleNamespace object.
+            Parses a single raw post into a SimpleNamespace object.
 
             :param raw_post: A dictionary containing raw data for a single Reddit post.
             :type raw_post: Dict
@@ -173,7 +173,9 @@ class Strukt:
                 }
             )
 
-        if isinstance(raw_posts, List) and all(isinstance(post) for post in raw_posts):
+        if isinstance(raw_posts, List) and all(
+            isinstance(post, Dict) for post in raw_posts
+        ):
             return [post(raw_post=raw_post) for raw_post in raw_posts]
         elif isinstance(raw_posts, Dict):
             return post(raw_post=raw_posts)
@@ -182,7 +184,7 @@ class Strukt:
         self, raw_subreddits: Union[List[Dict], Dict]
     ) -> Union[List[SimpleNamespace], SimpleNamespace]:
         """
-        Restructures raw Reddit subreddits and parses them into a list of SimpleNamespace objects.
+        Parses sanitised Reddit subreddits into a list of SimpleNamespace objects.
 
         :param raw_subreddits: A list of dictionaries, each representing raw subreddit data, or a single dictionary.
         :type raw_subreddits: Union[List[Dict], Dict]
@@ -192,7 +194,7 @@ class Strukt:
 
         def subreddit(raw_subreddit: dict) -> SimpleNamespace:
             """
-            Restructures a single raw subreddit and parses it into a SimpleNamespace object.
+            Parses a single raw subreddit into a SimpleNamespace object.
 
             :param raw_subreddit: A dictionary containing raw data for a single subreddit.
             :type raw_subreddit: Dict
@@ -281,7 +283,7 @@ class Strukt:
             )
 
         if isinstance(raw_subreddits, List) and all(
-            isinstance(subreddit) for subreddit in raw_subreddits
+            isinstance(subreddit, Dict) for subreddit in raw_subreddits
         ):
             return [
                 subreddit(raw_subreddit=raw_subreddit)
@@ -294,7 +296,7 @@ class Strukt:
         self, raw_users: Union[List[Dict], Dict]
     ) -> Union[List[SimpleNamespace], SimpleNamespace]:
         """
-        Restructures raw Reddit users and parses them into a list of SimpleNamespace objects.
+        Parses sanitised Reddit users into a list of SimpleNamespace objects.
 
         :param raw_users: A list of dictionaries, each containing raw user data, or a single dictionary.
         :type raw_users: Union[List[Dict], Dict]
@@ -304,7 +306,7 @@ class Strukt:
 
         def user(raw_user: Dict) -> SimpleNamespace:
             """
-            Restructures a single raw user and parses it into a SimpleNamespace object.
+            Parses a single raw user into a SimpleNamespace object.
 
             :param raw_user: A dictionary containing raw data for a single Reddit user.
             :type raw_user: Dict
@@ -341,7 +343,9 @@ class Strukt:
                 }
             )
 
-        if isinstance(raw_users, List) and all(isinstance(user) for user in raw_users):
+        if isinstance(raw_users, List) and all(
+            isinstance(user, Dict) for user in raw_users
+        ):
             return [user(raw_user=raw_user) for raw_user in raw_users]
 
         elif isinstance(raw_users, Dict) and "is_employee" in raw_users:
@@ -349,7 +353,7 @@ class Strukt:
 
     def wiki_page(self, raw_wiki_page: Dict) -> SimpleNamespace:
         """
-        Restructures raw Reddit wiki page and parses it into a SimpleNamespace object.
+        Parses sanitised Reddit wiki page into a SimpleNamespace object.
 
         :param raw_wiki_page: A dictionary representing raw wiki page data.
         :type raw_wiki_page: Dict

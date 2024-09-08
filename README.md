@@ -7,21 +7,21 @@
 </p>
 
 ```python
-from karmakaze.klean import Klean
-from karmakaze.strukt import Strukt
+from karmakaze.parse import Parse
+from karmakaze.sanitise import Sanitise
 import requests
 
 username = "AutoModerator"
 response = requests.get(f"https://www.reddit.com/user/{username}/about.json").json()
 
-klean = Klean()  # Provides static methods for sanitising raw response data
-strukt = Strukt()  # Provides methods for restructuring the sanitised data
+sanitise = Sanitise()  # Provides static methods for sanitising raw response data
+parse = Parse()  # Provides methods for restructuring the sanitised data
 
-sanitised_data = klean.subreddit_or_user(response)
-restructured_data = strukt.users(sanitised_data)
+sanitised_data = sanitise.subreddit_or_user(response)
+parsed_data = parse.users(sanitised_data)
 
 print(sanitised_data)
-print(restructured_data)
+print(parsed_data)
 ```
 
 ## License
