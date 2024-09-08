@@ -28,6 +28,7 @@ print(parsed_data)
 
 MIT License © [Richard Mwewa](https://gravatar.com/rly0nheart)
 
-   <a href="https://gravatar.com/rly0nheart" target="_blank">
+***
+<a href="https://gravatar.com/rly0nheart" target="_blank">
       <img src="https://github.com/user-attachments/assets/5b29ee58-ea36-4ec0-aea3-4b2f9f7999fb" alt="richard-mwewa">
-   </a>
+</a>
