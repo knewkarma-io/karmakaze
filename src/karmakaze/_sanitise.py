@@ -6,7 +6,7 @@ class Sanitise:
     """
     Provides static methods to sanitise various types of data
     from Reddit API responses. 
-     """
+    """
      
     @staticmethod
     def comments(response: List[Dict]) -> List[Dict]:
