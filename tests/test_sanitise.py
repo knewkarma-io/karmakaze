@@ -1,5 +1,7 @@
 from typing import List, Dict
 
+import karmakaze
+
 from conftest import (
     RAW_COMMENTS,
     RAW_POST,
@@ -10,9 +12,9 @@ from conftest import (
     RAW_USERS,
     RAW_WIKI_PAGE,
 )
-from karmakaze import Sanitise
 
-sanitise = Sanitise
+
+sanitise = karmakaze.Sanitise()
 
 
 def test_comments_sanitisation():
