@@ -11,8 +11,7 @@ from conftest import (
     RAW_USERS,
     RAW_WIKI_PAGE,
 )
-from karmakaze.parse import Parse
-from karmakaze.sanitise import Sanitise
+from karmakaze import Parse, Sanitise
 
 sanitise = Sanitise()
 parse = Parse()

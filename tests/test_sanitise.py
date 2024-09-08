@@ -10,7 +10,7 @@ from conftest import (
     RAW_USERS,
     RAW_WIKI_PAGE,
 )
-from karmakaze.sanitise import Sanitise
+from karmakaze import Sanitise
 
 sanitise = Sanitise
 

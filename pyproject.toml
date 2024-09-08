@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "karmakaze"
-version = "1.1.0"
+version = "1.2.0"
 description = "Data sanitation engine for Knew Karma"
 authors = ["Richard Mwewa <rly0nheart@duck.com>"]
 license = "MIT License"

@@ -7,8 +7,7 @@
 </p>
 
 ```python
-from karmakaze.parse import Parse
-from karmakaze.sanitise import Sanitise
+from karmakaze import Parse, Sanitise
 import requests
 
 username = "AutoModerator"
