@@ -1,7 +1,7 @@
 from types import SimpleNamespace
 from typing import Dict, Union, List
 
-from .tools import timestamp_to_readable, TIME_FORMAT
+from ._tools import timestamp_to_readable, TIME_FORMAT
 
 __all__ = ["Parse"]
 

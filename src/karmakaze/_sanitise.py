@@ -1,19 +1,17 @@
 from typing import List, Dict, Union
 
-__all__ = ["Sanitise"]
+__all__ = ["Sanitise"]                            
 
-
-class Sanitise:
+class Sanitise: 
     """
     Provides static methods to sanitise various types of data
-    from Reddit API responses.
+    from Reddit API responses. 
     """
-
+     
     @staticmethod
     def comments(response: List[Dict]) -> List[Dict]:
         """
-        Sanitises a Reddit API response to extract and return a list of comment data.
-
+        Sanitises a Reddit API response to extract and return a list of comment data.               
         :param response: A list containing the Reddit API response data.
         :type response: List[Dict]
         :return: A list of dictionaries, each representing a comment's data.
