@@ -7,7 +7,20 @@ __all__ = ["Parse"]
 
 
 class Parse:
+    """
+    Provides methods for parsing sanitised data into SimpleNamespace objects.
+    """
+    
     def __init__(self, time_format: TIME_FORMAT = "locale"):
+        """
+        Initialises the Parse instance for parsing sanitised data into SimpleNamespace objects.
+        
+        :param time_format: Time format of the output data. 
+           Use `concise` for a human-readable time difference, 
+           or `locale` for a localized datetime string. Defaults to `locale`.
+        :type time_format: Literal["concise", "locale"]
+        """
+        
         self._time_format = time_format
 
     def comments(
