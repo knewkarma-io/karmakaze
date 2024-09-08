@@ -105,8 +105,6 @@ class Sanitise:
         sanitise = Sanitise
         data: Dict = response.get("data")
         if data:
-
-            # TODO:  I dont know why this is failing.
             data["revision_by"] = sanitise.subreddit_or_user(data.get("revision_by"))
             return data
 
