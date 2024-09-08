@@ -110,10 +110,15 @@ class Sanitise:
         :return: A dictionary representing the wiki page data, including revision information.
         :rtype: Dict
         """
-        sanitise = Sanitise
         data: Dict = response.get("data")
         if data:
-            data["revision_by"] = sanitise.subreddit_or_user(data.get("revision_by"))
+            revision_by = data.get("revision_by")
+            if revision_by and isinstance(revision_by, Dict):
+                sanitized_revision_by = Sanitise.subreddit_or_user(revision_by)
+                data["revision_by"] = (
+                    sanitized_revision_by if sanitized_revision_by else revision_by
+                )
+
             return data
 
 
