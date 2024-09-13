@@ -1,17 +1,18 @@
 from typing import List, Dict, Union
 
-__all__ = ["Sanitise"]                            
+__all__ = ["Sanitise"]
 
-class Sanitise: 
+
+class Sanitise:
     """
     Provides static methods to sanitise various types of data
-    from Reddit API responses. 
+    from Reddit API responses.
     """
-     
+
     @staticmethod
-    def comments(response: List[Dict]) -> List[Dict]:
+    def comments(response: List[Dict]) -> Union[List[Dict], None]:
         """
-        Sanitises a Reddit API response to extract and return a list of comment data.               
+        Sanitises a Reddit API response to extract and return a list of comment data.
         :param response: A list containing the Reddit API response data.
         :type response: List[Dict]
         :return: A list of dictionaries, each representing a comment's data.
@@ -30,7 +31,7 @@ class Sanitise:
         )
 
     @staticmethod
-    def post(response: List[Dict]) -> Dict:
+    def post(response: List[Dict]) -> Union[Dict, None]:
         """
         Sanitises a Reddit API response to extract and return the data of a single post.
 
@@ -48,7 +49,7 @@ class Sanitise:
         return children[0].get("data") if isinstance(children, List) else None
 
     @staticmethod
-    def posts(response: Dict) -> List[Dict]:
+    def posts(response: Dict) -> Union[List[Dict], None]:
         """
         Sanitises a Reddit API response to extract and return a list of post data.
 
@@ -66,7 +67,7 @@ class Sanitise:
         )
 
     @staticmethod
-    def subreddit_or_user(response: Dict) -> Dict:
+    def subreddit_or_user(response: Dict) -> Union[Dict, None]:
         """
         Sanitises a Reddit API response to extract and return the data of a subreddit or user.
 
@@ -92,13 +93,13 @@ class Sanitise:
 
         children: List = response.get("data").get("children")
         return (
-            [Sanitise.subreddit_or_user(data) for data in children]
+            [Sanitise.subreddit_or_user(response=data) for data in children]
             if isinstance(children, List)
             else None
         )
 
     @staticmethod
-    def wiki_page(response: Dict) -> Dict:
+    def wiki_page(response: Dict) -> Union[Dict, None]:
         """
         Sanitises a Reddit API response to extract and return the data of a wiki page,
         including revision information.
@@ -112,7 +113,7 @@ class Sanitise:
         if data:
             revision_by = data.get("revision_by")
             if revision_by and isinstance(revision_by, Dict):
-                sanitized_revision_by = Sanitise.subreddit_or_user(revision_by)
+                sanitized_revision_by = Sanitise.subreddit_or_user(response=revision_by)
                 data["revision_by"] = (
                     sanitized_revision_by if sanitized_revision_by else revision_by
                 )

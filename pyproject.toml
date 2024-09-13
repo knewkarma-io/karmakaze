@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "karmakaze"
-version = "1.2.0"
+version = "1.2.1"
 description = "Data sanitation engine for Knew Karma"
 authors = ["Richard Mwewa <rly0nheart@duck.com>"]
 license = "MIT License"
@@ -21,7 +21,7 @@ classifiers = [
 "Bug Tracker" = "https://github.com/rly0nheart/karmakaze/issues"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.1"
