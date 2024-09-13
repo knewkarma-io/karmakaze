@@ -21,7 +21,7 @@ classifiers = [
 "Bug Tracker" = "https://github.com/rly0nheart/karmakaze/issues"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.1"
