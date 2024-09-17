@@ -3,7 +3,7 @@
 <p align="center">Data sanitation engine for <a href="https://pypi.org/project/knewkarma" target="_blank">Knew Karma</a>.</p>
 
 <p align="center">
-      <img alt="Code Style" src="https://img.shields.io/badge/code%20style-black-000000?logo=github&link=https%3A%2F%2Fgithub.com%2Frly0nheart%2Fkarmakaze"></a>
+      <img alt="Code Style" src="https://img.shields.io/badge/code%20style-black-000000?logo=github&link=https%3A%2F%2Fgithub.com%2Frly0nheart%2Fkarmakaze">
 </p>
 
 ```python
@@ -16,8 +16,8 @@ response = requests.get(f"https://www.reddit.com/user/{username}/about.json").js
 sanitise = karmakaze.Sanitise()  # Provides static methods for sanitising raw response data
 parse = karmakaze.Parse()  # Provides methods for parsing the sanitised data
 
-sanitised_data = sanitise.subreddit_or_user(response)
-parsed_data = parse.users(sanitised_data)
+sanitised_data = sanitise.subreddit_or_user(response=response)
+parsed_data = parse.user(data=sanitised_data)
 
 print(sanitised_data)
 print(parsed_data)

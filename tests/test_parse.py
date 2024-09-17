@@ -2,7 +2,6 @@ from types import SimpleNamespace
 from typing import List, Dict
 
 import karmakaze
-
 from conftest import (
     RAW_COMMENTS,
     RAW_POST,
@@ -13,7 +12,6 @@ from conftest import (
     RAW_USERS,
     RAW_WIKI_PAGE,
 )
-
 
 sanitise = karmakaze.Sanitise()
 parse = karmakaze.Parse()
@@ -33,7 +31,7 @@ def test_comments_parsing():
 
 def test_post_parsing():
     sanitised_post = sanitise.post(RAW_POST)
-    parsed_post = parse.posts(sanitised_post)
+    parsed_post = parse.post(sanitised_post)
     assert isinstance(parsed_post, SimpleNamespace)
     assert isinstance(parsed_post.upvotes, int)
     assert isinstance(parsed_post.upvote_ratio, (float, int))
@@ -52,7 +50,7 @@ def test_posts_parsing():
 
 def test_subreddit_parsing():
     sanitised_subreddit = sanitise.subreddit_or_user(RAW_SUBREDDIT)
-    parsed_subreddit = parse.subreddits(sanitised_subreddit)
+    parsed_subreddit = parse.subreddit(sanitised_subreddit)
     assert isinstance(parsed_subreddit, SimpleNamespace)
     assert isinstance(parsed_subreddit.current_active_users, int)
     assert hasattr(parsed_subreddit, "display_name")
@@ -70,7 +68,7 @@ def test_subreddits_parsing():
 
 def test_user_parsing():
     sanitised_user = sanitise.subreddit_or_user(RAW_USER)
-    parsed_user = parse.users(sanitised_user)
+    parsed_user = parse.user(sanitised_user)
     assert isinstance(parsed_user, SimpleNamespace)
     assert isinstance(parsed_user.created, str)
     assert hasattr(parsed_user, "comment_karma")

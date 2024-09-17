@@ -1,7 +1,6 @@
 from typing import List, Dict
 
 import karmakaze
-
 from conftest import (
     RAW_COMMENTS,
     RAW_POST,
@@ -13,14 +12,12 @@ from conftest import (
     RAW_WIKI_PAGE,
 )
 
-
 sanitise = karmakaze.Sanitise()
 
 
 def test_comments_sanitisation():
     sanitised_comments = sanitise.comments(RAW_COMMENTS)
     assert isinstance(sanitised_comments, List)
-
     for comment in sanitised_comments:
         assert isinstance(comment, Dict)
         assert "link_id" in comment
