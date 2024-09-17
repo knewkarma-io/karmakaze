@@ -21,17 +21,6 @@ def timestamp_to_locale(timestamp: float) -> str:
     :type timestamp: float
     :return: A localized datetime string from the converted timestamp.
     :rtype: str
-
-    Usage::
-
-        >>> from karmakaze.tools import timestamp_to_locale
-
-        >>> coffee_time = 1722277062
-        >>> difference = timestamp_to_locale(timestamp=coffee_time)
-        >>> print(f"Coffee time was at {difference}")
-
-        # As of writing :)
-        Coffee time was at 29/07/24, 20:17:42
     """
 
     # Set the locale to the user's system default
@@ -54,17 +43,6 @@ def timestamp_to_concise(timestamp: int) -> str:
     :type timestamp: int
     :return: A string representing the time difference from now.
     :rtype: str
-
-    Usage::
-
-        >>> from karmakaze.tools import timestamp_to_concise
-
-        >>> coffee_time = 1722277062
-        >>> difference = timestamp_to_concise(timestamp=coffee_time)
-        >>> print(f"Coffee time was {difference} ago")
-
-        # As of writing :)
-        Coffee time was 10 minutes ago
     """
 
     # Convert the current time to a Unix timestamp
@@ -122,17 +100,6 @@ def timestamp_to_readable(
     :type time_format: Literal["concise", "locale"]
     :return: A string representing the formatted time. The format is determined by the `time_format` parameter.
     :rtype: str
-
-    Usage::
-
-        >>> from karmakaze.tools import timestamp_to_readable
-
-        >>> coffee_time = 1722277062
-        >>> difference = timestamp_to_readable(timestamp=coffee_time, time_format="concise")
-        >>> print(f"Coffee time was {difference} ago")
-
-        # As of writing :)
-        Coffee time was 10 minutes ago
     """
 
     if timestamp and isinstance(timestamp, (int, float)):
