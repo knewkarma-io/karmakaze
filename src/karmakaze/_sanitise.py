@@ -100,7 +100,7 @@ class Sanitise:
         """
 
         data: Dict = response.get("data")
-        return data if isinstance(data, Dict) else None
+        return data if "name" in data else None
 
     @staticmethod
     def subreddits_or_users(response: Dict) -> Union[List[Dict], None]:
