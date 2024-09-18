@@ -46,7 +46,7 @@ class Sanitise:
         :rtype: Union[str, None]
         """
         data: Dict = response.get("data")
-        return data.get("after") if "kind" in data else None
+        return data.get("after") if isinstance(data, Dict) else None
 
     @staticmethod
     def post(response: List[Dict]) -> Union[Dict, None]:
@@ -100,7 +100,7 @@ class Sanitise:
         """
 
         data: Dict = response.get("data")
-        return data if "name" in data else None
+        return data if isinstance(data, Dict) else None
 
     @staticmethod
     def subreddits_or_users(response: Dict) -> Union[List[Dict], None]:
