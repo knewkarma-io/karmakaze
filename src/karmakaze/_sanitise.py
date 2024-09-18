@@ -45,8 +45,8 @@ class Sanitise:
                 Returns None if the response is invalid.
         :rtype: Union[str, None]
         """
-
-        return response.get("after")
+        data: Dict = response.get("data")
+        return data.get("after") if "kind" in data else None
 
     @staticmethod
     def post(response: List[Dict]) -> Union[Dict, None]:
