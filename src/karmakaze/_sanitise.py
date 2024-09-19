@@ -35,6 +35,19 @@ class Sanitise:
             )
 
     @staticmethod
+    def kind(response: Dict) -> str:
+        """
+        Sanitises a Reddit API response to extract and return the item type/kind.
+
+        :param response: A dictionary containing Reddit API response data.
+        :type response: Dict
+        :return: A string representation of the type of item.
+        :rtype: str
+        """
+
+        return response.get("kind") if isinstance(response, Dict) else None
+
+    @staticmethod
     def pagination_id(response: Dict) -> Union[str, None]:
         """
         Sanitises a Reddit API response to extract and return a pagination ID.
