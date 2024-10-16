@@ -16,9 +16,6 @@ classifiers = [
     "Natural Language :: English"
 ]
 
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/knewkarma-io/karmakaze/issues"
-
 [tool.poetry.dependencies]
 python = "^3.10"
 
