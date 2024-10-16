@@ -10,6 +10,25 @@ class Sanitise:
     """
 
     @staticmethod
+    def remove_duplicates(data: List[Dict]):
+        """
+        Removes duplicates from a list of dictionary objects.
+        """
+
+        def make_hashable(obj: Dict):
+            if isinstance(obj, list):
+                return tuple(make_hashable(e) for e in obj)
+            elif isinstance(obj, dict):
+                return tuple(
+                    (key, make_hashable(value)) for key, value in sorted(obj.items())
+                )
+            return obj
+
+        return [
+            dict(item_tuple) for item_tuple in {make_hashable(item) for item in data}
+        ]
+
+    @staticmethod
     def comments(response: List[Dict]) -> Union[List[Dict], None]:
         """
         Sanitizes a Reddit API response to extract and return a list of comment data.
