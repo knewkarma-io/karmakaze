@@ -2,23 +2,19 @@
 name = "karmakaze"
 version = "1.5.0"
 description = "Data sanitation engine for Knew Karma"
-authors = ["Richard Mwewa <rly0nheart@duck.com>"]
-license = "MIT License"
+authors = ["Richard Mwewa <rly0nheart@duck.com>", "Knew Karma IO <redacted@redacted.com"]
+license = "GPL-3.0+"
 readme = "README.md"
-keywords = ["reddit", "reddit-api"]
 homepage = "https://knewkarma.readthedocs.io"
-repository = "https://github.com/rly0nheart/karmakaze"
+repository = "https://github.com/knewkarma-io/karmakaze"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Programming Language :: Python :: 3",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Natural Language :: English"
 ]
-
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/rly0nheart/karmakaze/issues"
 
 [tool.poetry.dependencies]
 python = "^3.10"
