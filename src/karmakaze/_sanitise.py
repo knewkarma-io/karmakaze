@@ -14,7 +14,19 @@ class Sanitise:
         """
         Removes duplicates from a list of dictionary objects.
         """
-        return [dict(t) for t in {tuple(sorted(item.items())) for item in data}]
+
+        def make_hashable(obj: Dict):
+            if isinstance(obj, list):
+                return tuple(make_hashable(e) for e in obj)
+            elif isinstance(obj, dict):
+                return tuple(
+                    (key, make_hashable(value)) for key, value in sorted(obj.items())
+                )
+            return obj
+
+        return [
+            dict(item_tuple) for item_tuple in {make_hashable(item) for item in data}
+        ]
 
     @staticmethod
     def comments(response: List[Dict]) -> Union[List[Dict], None]:
