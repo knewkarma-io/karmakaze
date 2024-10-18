@@ -1,6 +1,7 @@
 from typing import List, Dict
 
 import karmakaze
+
 from conftest import (
     RAW_COMMENTS,
     RAW_POST,

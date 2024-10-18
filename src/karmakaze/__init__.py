@@ -1,4 +1,3 @@
-from ._parse import Parse
-from ._sanitise import Sanitise
+from ._main import Parse, Sanitise
 
 __all__ = ["Parse", "Sanitise"]

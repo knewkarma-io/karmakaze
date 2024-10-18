@@ -2,6 +2,7 @@ from types import SimpleNamespace
 from typing import List, Dict
 
 import karmakaze
+
 from conftest import (
     RAW_COMMENTS,
     RAW_POST,
@@ -13,8 +14,8 @@ from conftest import (
     RAW_WIKI_PAGE,
 )
 
-sanitise = karmakaze.Sanitise()
 parse = karmakaze.Parse()
+sanitise = karmakaze.Sanitise()
 
 
 def test_comments_parsing():
