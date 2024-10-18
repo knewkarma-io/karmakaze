@@ -7,14 +7,15 @@
 </p>
 
 ```python
-import karmakaze
+from karmakaze.parse import Parse
+from karmakaze.sanitise import Sanitise
 import requests
 
 username = "AutoModerator"
 response = requests.get(f"https://www.reddit.com/user/{username}/about.json").json()
 
-sanitise = karmakaze.Sanitise()  # Provides static methods for sanitising raw response data
-parse = karmakaze.Parse()  # Provides methods for parsing the sanitised data
+sanitise = Sanitise()  # Provides static methods for sanitising raw response data
+parse = Parse()  # Provides methods for parsing the sanitised data
 
 sanitised_data = sanitise.subreddit_or_user(response=response)
 parsed_data = parse.user(data=sanitised_data)

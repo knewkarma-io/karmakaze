@@ -1,7 +1,6 @@
 from types import SimpleNamespace
 from typing import List, Dict
 
-import karmakaze
 from conftest import (
     RAW_COMMENTS,
     RAW_POST,
@@ -12,14 +11,13 @@ from conftest import (
     RAW_USERS,
     RAW_WIKI_PAGE,
 )
-
-sanitise = karmakaze.Sanitise()
-parse = karmakaze.Parse()
+from karmakaze.parse import Parse
+from karmakaze.sanitise import Sanitise
 
 
 def test_comments_parsing():
-    sanitised_comments = sanitise.comments(RAW_COMMENTS)
-    parsed_comments = parse.comments(sanitised_comments)
+    sanitised_comments = Sanitise.comments(RAW_COMMENTS)
+    parsed_comments = Parse().comments(sanitised_comments)
     assert isinstance(parsed_comments, List)
 
     for comment in parsed_comments:
@@ -30,8 +28,8 @@ def test_comments_parsing():
 
 
 def test_post_parsing():
-    sanitised_post = sanitise.post(RAW_POST)
-    parsed_post = parse.post(sanitised_post)
+    sanitised_post = Sanitise.post(RAW_POST)
+    parsed_post = Parse().post(sanitised_post)
     assert isinstance(parsed_post, SimpleNamespace)
     assert isinstance(parsed_post.upvotes, int)
     assert isinstance(parsed_post.upvote_ratio, (float, int))
@@ -39,8 +37,8 @@ def test_post_parsing():
 
 
 def test_posts_parsing():
-    sanitised_posts = sanitise.posts(RAW_POSTS)
-    parsed_posts = parse.posts(sanitised_posts)
+    sanitised_posts = Sanitise.posts(RAW_POSTS)
+    parsed_posts = Parse().posts(sanitised_posts)
     assert isinstance(parsed_posts, List)
     for post in parsed_posts:
         assert isinstance(post, SimpleNamespace)
@@ -49,16 +47,16 @@ def test_posts_parsing():
 
 
 def test_subreddit_parsing():
-    sanitised_subreddit = sanitise.subreddit_or_user(RAW_SUBREDDIT)
-    parsed_subreddit = parse.subreddit(sanitised_subreddit)
+    sanitised_subreddit = Sanitise.subreddit_or_user(RAW_SUBREDDIT)
+    parsed_subreddit = Parse().subreddit(sanitised_subreddit)
     assert isinstance(parsed_subreddit, SimpleNamespace)
     assert isinstance(parsed_subreddit.current_active_users, int)
     assert hasattr(parsed_subreddit, "display_name")
 
 
 def test_subreddits_parsing():
-    sanitised_subreddits = sanitise.subreddits_or_users(RAW_SUBREDDITS)
-    parsed_subreddits = parse.subreddits(sanitised_subreddits)
+    sanitised_subreddits = Sanitise.subreddits_or_users(RAW_SUBREDDITS)
+    parsed_subreddits = Parse().subreddits(sanitised_subreddits)
     assert isinstance(parsed_subreddits, List)
     for subreddit in parsed_subreddits:
         assert isinstance(subreddit, SimpleNamespace)
@@ -67,16 +65,16 @@ def test_subreddits_parsing():
 
 
 def test_user_parsing():
-    sanitised_user = sanitise.subreddit_or_user(RAW_USER)
-    parsed_user = parse.user(sanitised_user)
+    sanitised_user = Sanitise.subreddit_or_user(RAW_USER)
+    parsed_user = Parse().user(sanitised_user)
     assert isinstance(parsed_user, SimpleNamespace)
     assert isinstance(parsed_user.created, str)
     assert hasattr(parsed_user, "comment_karma")
 
 
 def test_users_parsing():
-    sanitised_users = sanitise.subreddits_or_users(RAW_USERS)
-    parsed_users = parse.users(sanitised_users)
+    sanitised_users = Sanitise.subreddits_or_users(RAW_USERS)
+    parsed_users = Parse().users(sanitised_users)
     assert isinstance(parsed_users, List)
     for user in parsed_users:
         assert isinstance(user, SimpleNamespace)
@@ -85,8 +83,8 @@ def test_users_parsing():
 
 
 def test_wiki_page_parsing():
-    sanitised_wiki_page = sanitise.wiki_page(RAW_WIKI_PAGE)
-    parsed_wiki_page = parse.wiki_page(sanitised_wiki_page)
+    sanitised_wiki_page = Sanitise.wiki_page(RAW_WIKI_PAGE)
+    parsed_wiki_page = Parse().wiki_page(sanitised_wiki_page)
     assert isinstance(parsed_wiki_page, SimpleNamespace)
     assert isinstance(parsed_wiki_page.revision_date, str)
     assert hasattr(parsed_wiki_page, "revision_id")
