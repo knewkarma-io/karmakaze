@@ -395,17 +395,15 @@ class Sanitise:
            Returns None if the response is invalid.
         :rtype: Union[List[Dict], None]
         """
+        if isinstance(response, List) and len(response) == 2:
+            children = response[1].get("data", {}).get("children")
 
-        if isinstance(response, List):
-            response = response[1]  # Extract the second element where data resides.
-            data: Dict = response.get("data")
-            children = data.get("children")
-
-            return (
-                [child.get("data") for child in children]
-                if isinstance(children, List)
-                else None
-            )
+            if isinstance(children, List):
+                return (
+                    [child.get("data") for child in children]
+                    if isinstance(children, List)
+                    else None
+                )
 
     @staticmethod
     def kind(response: Dict) -> str:
