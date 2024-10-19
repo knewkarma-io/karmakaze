@@ -2,7 +2,6 @@ from types import SimpleNamespace
 from typing import List, Dict
 
 import karmakaze
-
 from conftest import (
     RAW_COMMENTS,
     RAW_POST,
@@ -20,6 +19,7 @@ sanitise = karmakaze.Sanitise()
 
 def test_comments_parsing():
     sanitised_comments = sanitise.comments(RAW_COMMENTS)
+    print(sanitised_comments)
     parsed_comments = parse.comments(sanitised_comments)
     assert isinstance(parsed_comments, List)
 
