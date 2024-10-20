@@ -19,7 +19,7 @@ print(snp.user(response=response))
 
 ## License
 
-GPL-3.0+ © [Richard Mwewa](https://gravatar.com/rly0nheart)
+GPL-3.0+ License © [Richard Mwewa](https://gravatar.com/rly0nheart)
 
 ***
 <a href="https://gravatar.com/rly0nheart" target="_blank">
